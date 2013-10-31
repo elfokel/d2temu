@@ -1,6 +1,16 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <style>
+      th {
+          padding: 0.5em 1em;
+          border: 0px solid #ccc;
+      }
+      td {
+          padding: 0.5em 1em;
+          border: 0px solid #ccc;
+      }
+      </style>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <title>d2temu</title>
@@ -16,8 +26,8 @@
         <div id="sideNav">
           <div id="pageNav">
             <ul>
-              <li><a href="#options">Link one</a></li>
-              <li><a href="#account">Link two</a></li>
+              <li><a href="#roms">Roms</a></li>
+              <li><a href="#emulators">Emulators</a></li>
             </ul>
           </div>
         </div>
@@ -27,7 +37,7 @@
           <div class="max-width">
             <hgroup>
               <h1><a href="#/">D2Temu</a></h1>
-              <p>Go away please.</p>
+              <p>Emulation Conflagration</p>
             </hgroup>
           </div>
         </header>
@@ -36,19 +46,40 @@
     </div>
     <script src="js/vendor/angular.min.js"></script>
     <script src="js/src/app.js"></script>
-    <script type="text/ng-template" id="landing.html">
+    <script type="text/ng-template" id="home.html">
 		<header>
 			<h2>Hello World</h2>
+        <p>Stuff</p>
 		</header>
     </script>
-	<script type="text/ng-template" id="options.html">
+	<script type="text/ng-template" id="roms.html">
 		<header>
-			<h2>These are options</h2>
+			<h2>These are roms</h2>
+        <p>
+          <table>
+             <caption></caption>
+             <thead>
+                <tr>
+                   <th>System</th>
+                   <th>Size</th>
+                   <th>Date</th>
+                </tr>
+             </thead>
+             <tbody>
+                <tr ng-repeat="file in model.files">
+                   <td>{{file.name}}</td>
+                   <td>{{file.size}}</td>
+                   <td>{{file.date}}</td>
+                </tr>
+             </tbody>
+          </table>
+      </p>
 		</header>
 	</script>
-	<script type="text/ng-template" id="accounts.html">
+	<script type="text/ng-template" id="emulators.html">
 		<header>
-			<h2>These are accounts</h2>
+			<h2>These are emulators</h2>
+      <p>Stuff</p>
 		</header>
 	</script>
   </body>
