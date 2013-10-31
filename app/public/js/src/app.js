@@ -7,15 +7,21 @@
 		$routeProvider
 		.when('/', {
 			controller : function ($scope) {},
-			templateUrl : 'landing.html'
+			templateUrl : 'home.html'
 		})
-		.when('/options', {
-			controller : function ($scope) {},
-			templateUrl : 'options.html'
+		.when('/roms', {
+			controller : function ($scope, $http) {
+				var model = {};
+				$http.get("getDirectory").success(function (data) {
+					model.files = data;
+					$scope.model = model;
+				});
+			},
+			templateUrl : 'roms.html'
 		})
-		.when('/account', {
+		.when('/emulators', {
 			controller : function ($scope) {},
-			templateUrl : 'accounts.html'
+			templateUrl : 'emulators.html'
 		});
 
 	});
