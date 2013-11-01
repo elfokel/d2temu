@@ -8,7 +8,10 @@
         express = require('express'),
         path = require('path'),
         app = express(),
-        port = process.env.PORT || 5000;
+        port = process.env.PORT || 5000,
+        Client = require('ftp'),
+        config = require('./d2t.config.json');
+
 
 
     //configure the express app
@@ -30,6 +33,30 @@
     //Routes:
     app.get('/', function (req, res) {
         res.render('index.html');
+    });
+
+    app.get('/getDirectory', function (req, res) {
+        // res.send(JSON.stringify({folder : "this is a folder"}));
+        var c = new Client();
+        var fileList = [];
+        var i = 0;
+          c.on('ready', function() {
+            c.list("roms",function(err, list) {
+              if (err) throw err;
+              for (i = 0; i < list.length; i++) {
+                fileList.push({
+                    name: list[i].name,
+                    size: list[i].size,
+                    date: list[i].date
+
+                });
+              }
+              res.send(JSON.stringify(fileList));
+              c.end();
+            });
+          });
+          // connect to localhost:21 as anonymous
+          c.connect(config);
     });
 
     app.get('*', function (req, res) {
