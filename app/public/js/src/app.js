@@ -22,6 +22,16 @@
 		.when('/emulators', {
 			controller : function ($scope) {},
 			templateUrl : 'emulators.html'
+		})
+		.when('/gba', {
+			controller : function ($scope, $http) {
+				var model = {};
+				$http.get("getDirectorygba").success(function (data) {
+					model.files = data;
+					$scope.model = model;
+				});
+			},
+			templateUrl : 'gba.html'
 		});
 
 	});

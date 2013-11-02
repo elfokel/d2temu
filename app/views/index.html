@@ -10,6 +10,10 @@
           padding: 0.5em 1em;
           border: 1px solid #ccc;
       }
+      a
+      {
+          color: white;
+      }
       </style>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -48,8 +52,8 @@
     <script src="js/src/app.js"></script>
     <script type="text/ng-template" id="home.html">
 		<header>
-			<h2>Hello World</h2>
-        <p>Stuff</p>
+			<h2>D2Temu</h2>
+        <p>On our way!</p>
 		</header>
     </script>
 	<script type="text/ng-template" id="roms.html">
@@ -57,19 +61,19 @@
 			<h2>Here be some tasty roms, matey!</h2>
         <p>
           <table>
-             <caption></caption>
+             <!--<caption></caption>-->
              <thead>
                 <tr>
                    <th>System</th>
-                   <th>Size</th>
-                   <th>Date</th>
+                   <!--<th>Size</th>-->
+                   <!--<th>Date</th>-->
                 </tr>
              </thead>
              <tbody>
                 <tr ng-repeat="file in model.files">
-                   <td>{{file.name}}</td>
-                   <td>{{file.size}}</td>
-                   <td>{{file.date}}</td>
+                   <td><a href="#{{file.name}}">{{file.name}}</a></td>
+                   <!--<td>{{file.size}}</td>-->
+                   <!--<td>{{file.date}}</td>-->
                 </tr>
              </tbody>
           </table>
@@ -82,5 +86,29 @@
       <p>Stuff</p>
 		</header>
 	</script>
+  <script type="text/ng-template" id="gba.html">
+    <header>
+      <h2>gba roms</h2>
+      <p>          
+        <table>
+    <!--<caption></caption>-->
+            <thead>
+              <tr>
+                <th>System</th>
+                <th>Size</th>
+            <!--<th>Date</th>-->
+              </tr>
+             </thead>
+             <tbody>
+              <tr ng-repeat="file in model.files">
+                <td><a href="#{{file.name}}">{{file.name}}</a></td>
+                <td>{{file.size}}</td>
+            <!--<td>{{file.date}}</td>-->
+              </tr>
+             </tbody>
+          </table>
+          </p>
+    </header>
+  </script>
   </body>
 </html>
